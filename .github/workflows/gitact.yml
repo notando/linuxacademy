@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+# --------------------------------
+#GitHuB
+#Copylest(c) by Roman Beygelman 2021
+#---------------------------------
+name: My-GItAction-basics
+env:
+  APPLICATION_NAME       : "MyFlask"
+  DEPLOY_PACKAGE_NAME    : "flask-deploy-ver-${{ github.sha }}"
+  
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches:
+      - master
+      
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  my_testing:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Print Hello Message in Testing
+      run: echo "hello.I'm testing now..."
+      
+    - name: Execute few commands
+      run: |
+        echo"hello message1"
+        echo "hello message2"
+        echo "App name: ${{ env.APPLICATION_NAME }}"
+      
+      
+  my_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Print Hello Message in deploy
+      run: echo "Hello.I'm deploynd now..."
+      
+    - name: Deployment packages
+      run: |
+        echo"hello message1"
+        echo "hello message2"
+        echo "Depoy package is: ${{ env.DEPLOY_PACKAGE_NAME }}"
+    
+
